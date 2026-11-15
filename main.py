@@ -17,12 +17,6 @@ MENU = """
 0. выйти-_- 67
 """
 
-project_directory = Path(__file__).resolve().parent
-data_directory = project_directory / "data"
-
-dish_repository = JsonRepository(data_directory / "dishes.json", Dish)
-order_repository = JsonRepository(data_directory / "orders.json", Order)
-service = RestaurantService(dish_repository, order_repository)
 
 def read_positive_integer(prompt):
     # input возвращает строку, поэтому сначала надо переводести её в число
@@ -47,9 +41,11 @@ def print_order_details(service, order):
 
 
 def main():
-    # блюда и заказы хранятся в разных словарях____67
-    dish_repository = MemoryRepository()
-    order_repository = MemoryRepository()
+    project_directory = Path(__file__).resolve().parent
+    data_directory = project_directory / "data"
+
+    dish_repository = JsonRepository(data_directory / "dishes.json", Dish)
+    order_repository = JsonRepository(data_directory / "orders.json", Order)
     service = RestaurantService(dish_repository, order_repository)
 
     while True:
