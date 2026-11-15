@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": 1,
+    "table_number": 1,
+    "is_closed": false,
+    "items": [
+      {
+        "dish_name": "67",
+        "price": 76,
+        "quantity": 67
+      }
+    ]
+  }
+]
