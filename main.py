@@ -1,4 +1,7 @@
-from repository_layer import MemoryRepository
+from pathlib import Path
+
+from data_layer import Dish, Order
+from json_repository import JsonRepository
 from service_layer import RestaurantService
 
 
@@ -13,6 +16,13 @@ MENU = """
 8. закрыть заказ_😛
 0. выйти-_- 67
 """
+
+project_directory = Path(__file__).resolve().parent
+data_directory = project_directory / "data"
+
+dish_repository = JsonRepository(data_directory / "dishes.json", Dish)
+order_repository = JsonRepository(data_directory / "orders.json", Order)
+service = RestaurantService(dish_repository, order_repository)
 
 def read_positive_integer(prompt):
     # input возвращает строку, поэтому сначала надо переводести её в число
